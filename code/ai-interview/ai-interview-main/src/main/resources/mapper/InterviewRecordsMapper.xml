@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elephant.ai.mapper.InterviewRecordsMapper">
+
+
+    <select id="getChatRecordsByPage" resultType="com.elephant.ai.domain.InterviewRecords">
+        select session_id,content, openid, category, SUBJECT
+        from ai_interview_interview_records
+        where del_flag = 1 and
+            openid =#{openId}
+        order by create_time asc
+        limit #{offset},#{limit}
+    </select>
+</mapper>
